@@ -1,0 +1,41 @@
+Capitolul 1. Proiectarea Arhitecturii Hardware
+1.1. Introducere și Descrierea Sistemului
+Arhitectura hardware a acestui nod IoT (Internet of Things) a fost proiectată pentru a 
+asigura achiziția datelor de mediu în timp real, procesarea locală a acestora și acționarea 
+unor elemente de execuție pe baza unui set de reguli predefinite. Sistemul centralizează datele 
+preluate de la senzori, oferă feedback vizual prin intermediul unei interfețe om-mașină (HMI) 
+și controlează un actuator fizic, fiind totodată capabil de conectivitate wireless.
+
+1.2. Justificarea Alegerii Componentelor
+Pentru implementarea sistemului au fost selectate următoarele componente hardware, 
+alegerea lor fiind fundamentată pe cerințele de performanță, consum și compatibilitate 
+industrială:
+
+Microcontrolerul (Unitatea Centrală de Procesare): ESP32 DevKit V1. A fost preferat în 
+detrimentul microcontrolerelor pe 8-biți (ex. familia PIC18) datorită arhitecturii sale 
+pe 32-biți (Tensilica Xtensa Dual-Core) ce rulează la 240 MHz. Această putere de calcul 
+este necesară pentru rularea unui sistem de operare în timp real (FreeRTOS) și pentru 
+gestionarea stivei TCP/IP (WiFi) fără a bloca achiziția de date.
+
+Modulul de Achiziție (Senzorul): DHT22. Utilizat pentru monitorizarea temperaturii și 
+umidității relative. Oferă o ieșire digitală calibrată, eliminând necesitatea utilizării 
+convertoarelor analog-digitale (ADC) interne ale microcontrolerului și reducând zgomotul 
+pe linia de transmisie.
+
+Interfața Vizuală (HMI): Display OLED SSD1306 (0.96"). Un ecran cu consum redus de energie 
+care utilizează protocolul de comunicație I2C (Inter-Integrated Circuit). Utilizarea magistralei 
+I2C este esențială deoarece permite conectarea mai multor periferice folosind doar doi pini de 
+date, optimizând astfel resursele microcontrolerului.
+
+Elementul de Execuție (Actuatorul): Micro-Servomotor. Simulează o valvă de siguranță industrială. 
+Controlul acestuia se realizează printr-un semnal PWM (Pulse Width Modulation), microcontrolerul 
+ajustând factorul de umplere (duty cycle) pentru a obține o poziționare unghiulară precisă.
+
+Indicatoare de Stare: LED-uri. Două diode emițătoare de lumină (verde și roșie), înseriate cu 
+rezistențe de limitare a curentului, folosite pentru diagnosticarea rapidă a stării sistemului 
+(Operare Normală vs. Stare de Alarmă).
+
+1.3. Schema de Conectare și Alocarea Pinilor (Pinout)
+Alocarea pinilor (GPIO - General Purpose Input/Output) a fost realizată respectând constrângerile 
+arhitecturale ale plăcii ESP32, separând magistralele de comunicație de semnalele PWM și de 
+intrările/ieșirile digitale standard.
