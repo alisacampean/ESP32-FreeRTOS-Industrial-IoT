@@ -1,5 +1,7 @@
 # ESP32-FreeRTOS-Industrial-IoT
 
+**[Click here to run the Live Simulation on Wokwi](https://wokwi.com/projects/458425376017219585)**
+
 Proiect Wowki Sistem IoT Industrial de Monitorizare și Control cu FreeRTOS
 Campean Alisa-Madalina
 Chapter 1. Hardware Architecture Design
