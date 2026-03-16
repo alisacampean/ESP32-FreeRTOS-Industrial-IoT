@@ -2,8 +2,6 @@
 
 **[Click here to run the Live Simulation on Wokwi](https://wokwi.com/projects/458425376017219585)**
 
-Proiect Wowki Sistem IoT Industrial de Monitorizare și Control cu FreeRTOS
-Campean Alisa-Madalina
 Chapter 1. Hardware Architecture Design
 1.1. Introduction and System Description The hardware architecture of this IoT (Internet of Things) node was designed to ensure real-time environmental data acquisition, local processing, and the actuation of execution elements based on a predefined set of rules. The system centralizes data acquired from sensors, provides visual feedback via a human-machine interface (HMI), and controls a physical actuator, while also being capable of wireless connectivity.
 1.2. Component Selection The following hardware components were selected to implement the system, with the choice being based on performance, power consumption, and industrial compatibility requirements:
